@@ -12,6 +12,7 @@ interface LocalProgress {
 export interface WritingSubmission {
   exerciseId: string
   content: string
+  public: boolean
   createdAt: string
   updatedAt: string
 }
@@ -82,22 +83,38 @@ export function getAllSubmissions(): WritingSubmission[] {
   return loadSubmissions()
 }
 
-export function saveSubmission(exerciseId: string, content: string): WritingSubmission {
+export function saveSubmission(exerciseId: string, content: string, isPublic = true): WritingSubmission | null {
+  // 空文本不保存，如果之前有则删除
+  if (!content.trim()) {
+    deleteSubmission(exerciseId)
+    return null
+  }
+
   const all = loadSubmissions()
   const existing = all.findIndex((s) => s.exerciseId === exerciseId)
   const now = new Date().toISOString()
 
   if (existing >= 0) {
-    all[existing].content = content
+    all[existing].content = content.trim()
+    all[existing].public = isPublic
     all[existing].updatedAt = now
     saveSubmissions(all)
     return all[existing]
   } else {
-    const submission: WritingSubmission = { exerciseId, content, createdAt: now, updatedAt: now }
+    const submission: WritingSubmission = { exerciseId, content: content.trim(), public: isPublic, createdAt: now, updatedAt: now }
     all.push(submission)
     saveSubmissions(all)
     return submission
   }
+}
+
+export function togglePublic(exerciseId: string): boolean {
+  const all = loadSubmissions()
+  const idx = all.findIndex((s) => s.exerciseId === exerciseId)
+  if (idx < 0) return false
+  all[idx].public = !all[idx].public
+  saveSubmissions(all)
+  return all[idx].public
 }
 
 export function deleteSubmission(exerciseId: string) {

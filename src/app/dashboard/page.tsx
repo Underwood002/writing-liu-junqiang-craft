@@ -60,8 +60,8 @@ export default function DashboardPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-16">
       <div className="mb-8 sm:mb-12">
-        <h1 className="text-xl sm:text-2xl font-medium text-stone-800">我的进度</h1>
-        <p className="mt-1 sm:mt-1.5 text-xs sm:text-sm text-stone-500">
+        <h1 className="text-2xl sm:text-3xl font-medium text-stone-800">我的进度</h1>
+        <p className="mt-1.5 sm:mt-2 text-sm sm:text-base text-stone-500">
           数据保存在当前浏览器中，随时回来继续。
         </p>
       </div>
@@ -70,7 +70,7 @@ export default function DashboardPage() {
       <div className="mb-10 sm:mb-12 flex flex-col items-center">
         <RingProgress pct={animated ? allPct : 0} size={100} stroke={5} />
         <p className="mt-2.5 sm:mt-3 text-sm font-medium text-stone-700">总完成率</p>
-        <p className="mt-0.5 text-xs text-stone-400">
+        <p className="mt-0.5 text-sm text-stone-400">
           {doneExercises + doneMovies + doneBooks} / {totalExercises + totalMovies + totalBooks} 项已完成
         </p>
       </div>
@@ -84,14 +84,14 @@ export default function DashboardPage() {
         ].map((item) => (
           <div key={item.label} className="flex flex-col items-center rounded-lg border border-stone-200 bg-white p-3.5 sm:p-5">
             <RingProgress pct={animated ? item.pct : 0} size={56} stroke={4} />
-            <p className="mt-1.5 sm:mt-2 text-[10px] sm:text-xs font-medium text-stone-600">{item.label}</p>
-            <p className="mt-0.5 text-[10px] sm:text-xs text-stone-400">{item.done}/{item.total}</p>
+            <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm font-medium text-stone-600">{item.label}</p>
+            <p className="mt-0.5 text-xs sm:text-sm text-stone-400">{item.done}/{item.total}</p>
           </div>
         ))}
       </div>
 
       {/* 各篇进度 */}
-      <h2 className="mb-3 sm:mb-4 text-xs sm:text-sm font-medium text-stone-600">各篇详情</h2>
+      <h2 className="mb-3 sm:mb-4 text-sm sm:text-base font-medium text-stone-600">各篇详情</h2>
       <div className="space-y-1.5 sm:space-y-2">
         {sections.map((sec) => {
           const secExDone = sec.exercises.filter((e) => progress.completedExercises.includes(e.id)).length
@@ -111,7 +111,7 @@ export default function DashboardPage() {
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline justify-between">
                   <p className="text-xs sm:text-sm text-stone-700 truncate">{sec.subtitle}</p>
-                  <span className="ml-1.5 sm:ml-2 shrink-0 font-mono text-[10px] sm:text-xs text-stone-400">{secDone}/{secTotal}</span>
+                  <span className="ml-1.5 sm:ml-2 shrink-0 font-mono text-xs sm:text-sm text-stone-400">{secDone}/{secTotal}</span>
                 </div>
                 <div className="mt-1.5 sm:mt-2 flex h-1.5 w-full gap-0.5 rounded-full overflow-hidden bg-stone-100">
                   {sec.exercises.length > 0 && (

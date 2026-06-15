@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-accent: #b8956a;
   --color-accent-light: #f5efe6;
+  --color-accent-dark: #d4a96a;
+  --color-accent-dark-bg: #2a2420;
 }
 
 body {
@@ -13,8 +17,100 @@ body {
   background: #fafaf9;
 }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 2px; }
+.dark body,
+body.dark,
+.dark {
+  color: #e7e5e4;
+  background: #1c1917;
+}
 
-::selection { background: var(--color-accent-light); }
+/* 暗色模式下全局覆盖 */
+.dark .bg-white { background-color: #292524; }
+.dark .bg-stone-50 { background-color: #1c1917; }
+.dark .bg-stone-50\/50 { background-color: rgb(28 25 23 / 0.5); }
+.dark .bg-stone-50\/70 { background-color: rgb(28 25 23 / 0.7); }
+.dark .bg-stone-100 { background-color: #292524; }
+.dark .bg-stone-200 { background-color: #44403c; }
+
+.dark .text-stone-900 { color: #e7e5e4; }
+.dark .text-stone-800 { color: #d6d3d1; }
+.dark .text-stone-700 { color: #c4b5a5; }
+.dark .text-stone-600 { color: #a8a29e; }
+.dark .text-stone-500 { color: #a8a29e; }
+.dark .text-stone-400 { color: #78716c; }
+.dark .text-stone-300 { color: #57534e; }
+.dark .text-stone-200 { color: #44403c; }
+.dark .text-stone-100 { color: #292524; }
+
+.dark .border-stone-50 { border-color: #292524; }
+.dark .border-stone-100 { border-color: #292524; }
+.dark .border-stone-200 { border-color: #44403c; }
+.dark .border-stone-300 { border-color: #57534e; }
+.dark .border-stone-400 { border-color: #78716c; }
+.dark .border-dashed { border-color: #44403c; }
+
+.dark .bg-stone-800 { background-color: #d6d3d1; }
+.dark .bg-stone-700 { background-color: #c4b5a5; }
+.dark .hover\:bg-stone-700:hover { background-color: #c4b5a5; }
+
+.dark .text-white { color: #1c1917; }
+.dark .bg-accent-light { background-color: var(--color-accent-dark-bg); }
+.dark .text-accent { color: var(--color-accent-dark); }
+
+.dark .bg-stone-800\/50 { background-color: rgb(214 211 209 / 0.5); }
+
+.dark .divide-stone-200 > :not([hidden]) ~ :not([hidden]) { border-color: #44403c; }
+
+.dark .hover\:bg-stone-50:hover { background-color: #292524; }
+.dark .hover\:bg-stone-50\/30:hover { background-color: rgb(41 37 36 / 0.3); }
+.dark .hover\:bg-stone-100:hover { background-color: #292524; }
+.dark .hover\:text-stone-800:hover { color: #d6d3d1; }
+.dark .hover\:text-stone-700:hover { color: #c4b5a5; }
+.dark .hover\:text-stone-600:hover { color: #a8a29e; }
+.dark .hover\:border-stone-300:hover { border-color: #57534e; }
+.dark .hover\:border-stone-400:hover { border-color: #78716c; }
+.dark .hover\:bg-stone-50\/30:hover { background-color: rgb(41 37 36 / 0.3); }
+
+.dark .bg-amber-50 { background-color: #2a2420; }
+.dark .bg-sky-50 { background-color: #1a2630; }
+.dark .bg-emerald-50 { background-color: #1a2822; }
+.dark .border-amber-200 { border-color: #5c4030; }
+.dark .border-sky-200 { border-color: #2a4a60; }
+.dark .border-emerald-200 { border-color: #2a4a38; }
+.dark .text-amber-700 { color: #d4a96a; }
+.dark .text-sky-700 { color: #7ab8d4; }
+.dark .text-emerald-700 { color: #7ab89a; }
+
+.dark .bg-amber-400\/60 { background-color: rgb(212 169 106 / 0.6); }
+.dark .bg-sky-400\/60 { background-color: rgb(122 184 212 / 0.6); }
+.dark .bg-emerald-400\/60 { background-color: rgb(122 184 154 / 0.6); }
+
+.dark .border-accent\/10 { border-color: rgb(180 149 106 / 0.1); }
+.dark .border-accent\/30 { border-color: rgb(180 149 106 / 0.3); }
+
+.dark .from-stone-50 { --tw-gradient-from: #1c1917; }
+
+.dark .placeholder\:text-stone-300::placeholder { color: #57534e; }
+
+.dark .prose-stone { --tw-prose-body: #d6d3d1; }
+
+.dark .bg-white\/80 { background-color: rgb(28 25 23 / 0.8); }
+
+/* 保持品牌色可读 */
+.dark .text-accent { color: var(--color-accent-dark); }
+
+/* 选中颜色暗色版 */
+.dark ::selection { background: var(--color-accent-dark-bg); }
+
+/* 滚动条暗色 */
+.dark ::-webkit-scrollbar-thumb { background: #57534e; }
+
+/* code 暗色 */
+.dark code.bg-stone-100 { background-color: #292524; }
+
+/* 完成状态暗色 */
+.dark .line-through { color: #57534e; }
+.dark .decoration-stone-300 { text-decoration-color: #57534e; }
+
+/* hover bg 暗色 */
+.dark .hover\:bg-black\/04:hover { background-color: rgb(255 255 255 / 0.04); }
