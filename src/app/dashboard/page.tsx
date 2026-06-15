@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import { sections } from '@/data/sections'
@@ -61,7 +61,7 @@ export default function DashboardPage() {
     <div className="mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-16">
       <div className="mb-8 sm:mb-12">
         <h1 className="text-2xl sm:text-3xl font-medium text-stone-800">我的进度</h1>
-        <p className="mt-1.5 sm:mt-2 text-sm sm:text-base text-stone-500">
+        <p className="mt-1.5 sm:mt-2 text-base sm:text-lg text-stone-500">
           数据保存在当前浏览器中，随时回来继续。
         </p>
       </div>
@@ -84,14 +84,14 @@ export default function DashboardPage() {
         ].map((item) => (
           <div key={item.label} className="flex flex-col items-center rounded-lg border border-stone-200 bg-white p-3.5 sm:p-5">
             <RingProgress pct={animated ? item.pct : 0} size={56} stroke={4} />
-            <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm font-medium text-stone-600">{item.label}</p>
-            <p className="mt-0.5 text-xs sm:text-sm text-stone-400">{item.done}/{item.total}</p>
+            <p className="mt-1.5 sm:mt-2 text-base sm:text-lg font-medium text-stone-600">{item.label}</p>
+            <p className="mt-0.5 text-base sm:text-lg text-stone-400">{item.done}/{item.total}</p>
           </div>
         ))}
       </div>
 
       {/* 各篇进度 */}
-      <h2 className="mb-3 sm:mb-4 text-sm sm:text-base font-medium text-stone-600">各篇详情</h2>
+      <h2 className="mb-3 sm:mb-4 text-base sm:text-lg font-medium text-stone-600">各篇详情</h2>
       <div className="space-y-1.5 sm:space-y-2">
         {sections.map((sec) => {
           const secExDone = sec.exercises.filter((e) => progress.completedExercises.includes(e.id)).length
@@ -110,8 +110,8 @@ export default function DashboardPage() {
               <span className="font-mono text-base sm:text-lg font-light text-stone-300 w-6 sm:w-7">{String(sec.id).padStart(2, '0')}</span>
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline justify-between">
-                  <p className="text-xs sm:text-sm text-stone-700 truncate">{sec.subtitle}</p>
-                  <span className="ml-1.5 sm:ml-2 shrink-0 font-mono text-xs sm:text-sm text-stone-400">{secDone}/{secTotal}</span>
+                  <p className="text-base sm:text-lg text-stone-700 truncate">{sec.subtitle}</p>
+                  <span className="ml-1.5 sm:ml-2 shrink-0 font-mono text-base sm:text-lg text-stone-400">{secDone}/{secTotal}</span>
                 </div>
                 <div className="mt-1.5 sm:mt-2 flex h-1.5 w-full gap-0.5 rounded-full overflow-hidden bg-stone-100">
                   {sec.exercises.length > 0 && (
@@ -136,11 +136,11 @@ export default function DashboardPage() {
       {/* 空状态 */}
       {doneExercises + doneMovies + doneBooks === 0 && (
         <div className="mt-10 sm:mt-12 rounded-lg border border-dashed border-stone-200 bg-white p-6 sm:p-8 text-center">
-          <p className="text-xs sm:text-sm text-stone-400">
+          <p className="text-base sm:text-lg text-stone-400">
             还没有任何完成记录。去各篇的训练页开始勾选吧。
           </p>
           <Link href="/section/1"
-            className="mt-3 inline-flex items-center gap-1 text-xs sm:text-sm font-medium text-accent hover:underline underline-offset-4">
+            className="mt-3 inline-flex items-center gap-1 text-base sm:text-lg font-medium text-accent hover:underline underline-offset-4">
             从第一篇开始
           </Link>
         </div>

@@ -295,7 +295,7 @@ export default function SectionPage() {
                                     <p className={`text-sm sm:text-base font-medium transition-colors ${done ? 'text-stone-400 line-through decoration-stone-300' : 'text-stone-800'}`}>
                                       {ex.title}
                                     </p>
-                                    <p className={`mt-1 text-xs sm:text-sm leading-relaxed transition-colors ${done ? 'text-stone-300' : 'text-stone-500'}`}>
+                                    <p className={`mt-1 text-sm sm:text-base leading-relaxed transition-colors ${done ? 'text-stone-300' : 'text-stone-500'}`}>
                                       {ex.description}
                                     </p>
                                   </div>
@@ -321,7 +321,7 @@ export default function SectionPage() {
                                     <div className="flex items-start justify-between gap-2">
                                       <div className="flex-1 min-w-0">
                                         <div
-                                          className="text-xs sm:text-sm leading-relaxed text-stone-600 line-clamp-3 prose-stone"
+                                          className="text-sm sm:text-base leading-relaxed text-stone-600 line-clamp-3 prose-stone"
                                           dangerouslySetInnerHTML={{ __html: renderMarkdown(submission.content) }}
                                         />
                                       </div>
@@ -379,7 +379,7 @@ export default function SectionPage() {
                       <p className={`text-sm sm:text-base font-medium transition-colors ${done ? 'text-stone-400 line-through decoration-stone-300' : 'text-stone-800'}`}>
                         {m.title} <span className="ml-1.5 font-normal text-stone-400">{m.year}</span>
                       </p>
-                      <p className={`mt-1 text-xs sm:text-sm leading-relaxed transition-colors ${done ? 'text-stone-300' : 'text-stone-500'}`}>{m.description}</p>
+                      <p className={`mt-1 text-sm sm:text-base leading-relaxed transition-colors ${done ? 'text-stone-300' : 'text-stone-500'}`}>{m.description}</p>
                     </div>
                   </label>
                 )
@@ -438,7 +438,7 @@ export default function SectionPage() {
                     {section.references.map((ref, i) => (
                       <div key={ref.id} className="flex gap-3">
                         <span className="font-mono text-xs sm:text-sm text-stone-300 shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                        <p className="text-xs sm:text-sm leading-relaxed text-stone-500">{ref.citation}</p>
+                        <p className="text-sm sm:text-base leading-relaxed text-stone-500">{ref.citation}</p>
                       </div>
                     ))}
                   </div>

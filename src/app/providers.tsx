@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect, createContext, useContext } from 'react'
 import Link from 'next/link'
@@ -108,18 +108,18 @@ export function Providers({ children }: { children: React.ReactNode }) {
           <Link href="/" className="text-base sm:text-lg font-medium tracking-tight text-stone-800">
             写作是门手艺
           </Link>
-          <nav className="flex items-center gap-3 sm:gap-5 text-sm sm:text-base text-stone-500">
+          <nav className="flex items-center gap-3 sm:gap-5 text-base sm:text-lg text-stone-500">
             <Link href="/" className="transition-colors hover:text-stone-800">首页</Link>
             <Link href="/dashboard" className="transition-colors hover:text-stone-800">进度</Link>
             <Link href="/community" className="transition-colors hover:text-stone-800">社区</Link>
             <ThemeToggle />
             {user ? (
               <div className="flex items-center gap-2">
-                <span className="text-xs sm:text-sm text-stone-400 max-w-[120px] truncate">{user.email}</span>
+                <span className="text-base sm:text-lg text-stone-400 max-w-[120px] truncate">{user.email}</span>
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="rounded-full border border-stone-300 px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-medium text-stone-500 transition-colors hover:border-stone-400 hover:text-stone-700"
+                  className="rounded-full border border-stone-300 px-3 py-1 sm:px-4 sm:py-1.5 text-base sm:text-lg font-medium text-stone-500 transition-colors hover:border-stone-400 hover:text-stone-700"
                 >
                   退出
                 </button>
@@ -127,7 +127,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             ) : (
               <Link
                 href="/auth/login"
-                className="rounded-full border border-stone-300 px-3.5 py-1.5 sm:px-5 sm:py-2 text-xs sm:text-sm font-medium text-stone-600 transition-colors hover:border-stone-400 hover:text-stone-800"
+                className="rounded-full border border-stone-300 px-3.5 py-1.5 sm:px-5 sm:py-2 text-base sm:text-lg font-medium text-stone-600 transition-colors hover:border-stone-400 hover:text-stone-800"
               >
                 登录
               </Link>
@@ -138,7 +138,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
       <main className="pt-12 sm:pt-14">{children}</main>
 
-      <footer className="border-t border-stone-200 py-6 sm:py-8 text-center text-xs sm:text-sm text-stone-400 px-4">
+      <footer className="border-t border-stone-200 py-6 sm:py-8 text-center text-base sm:text-lg text-stone-400 px-4">
         一个写作训练追踪社区 · 基于刘军强《写作是门手艺》
       </footer>
     </ThemeCtx.Provider>

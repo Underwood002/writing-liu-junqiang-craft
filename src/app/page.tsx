@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { sections } from '@/data/sections'
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       <section className="mb-14 sm:mb-24 mt-2 sm:mt-4">
         <div className="flex flex-col gap-8 sm:gap-12 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="mb-3 sm:mb-4 font-mono text-xs sm:text-sm uppercase tracking-[0.2em] text-stone-400">
+            <p className="mb-3 sm:mb-4 font-mono text-base sm:text-lg uppercase tracking-[0.2em] text-stone-400">
               写作训练追踪社区
             </p>
             <h1 className="mb-4 sm:mb-6 text-4xl sm:text-6xl font-medium leading-tight tracking-tight text-stone-800">
@@ -53,26 +53,26 @@ export default function Home() {
             </span>
             <div className="min-w-0 flex-1">
               <div className="flex items-baseline gap-2">
-                <h2 className="text-sm sm:text-base font-medium text-stone-800">
+                <h2 className="text-base sm:text-lg font-medium text-stone-800">
                   {section.title}
                 </h2>
                 <span className="hidden text-sm text-stone-400 sm:inline">{section.chapters}</span>
               </div>
-              <p className="mt-1 text-sm sm:text-base text-stone-500">
+              <p className="mt-1 text-base sm:text-lg text-stone-500">
                 {section.subtitle}
               </p>
               <div className="mt-3 sm:mt-4 flex flex-wrap items-center gap-2 sm:gap-3">
-                <span className="inline-flex items-center gap-1 rounded-full bg-stone-100 px-2.5 py-0.5 text-xs sm:text-sm text-stone-500">
+                <span className="inline-flex items-center gap-1 rounded-full bg-stone-100 px-2.5 py-0.5 text-base sm:text-lg text-stone-500">
                   {section.exercises.length} 训
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-stone-100 px-2.5 py-0.5 text-xs sm:text-sm text-stone-500">
+                <span className="inline-flex items-center gap-1 rounded-full bg-stone-100 px-2.5 py-0.5 text-base sm:text-lg text-stone-500">
                   {section.movies.length} 影
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-stone-100 px-2.5 py-0.5 text-xs sm:text-sm text-stone-500">
+                <span className="inline-flex items-center gap-1 rounded-full bg-stone-100 px-2.5 py-0.5 text-base sm:text-lg text-stone-500">
                   {section.books.length} 书
                 </span>
                 {section.references.length > 0 && (
-                  <span className="text-xs sm:text-sm text-stone-300">+{section.references.length} 引用</span>
+                  <span className="text-base sm:text-lg text-stone-300">+{section.references.length} 引用</span>
                 )}
               </div>
             </div>
@@ -92,7 +92,7 @@ export default function Home() {
           </p>
           <Link
             href="/dashboard"
-            className="inline-flex items-center gap-2 rounded-lg bg-stone-800 px-5 py-2.5 text-sm sm:text-base font-medium text-white transition-colors hover:bg-stone-700 active:bg-stone-900"
+            className="inline-flex items-center gap-2 rounded-lg bg-stone-800 px-5 py-2.5 text-base sm:text-lg font-medium text-white transition-colors hover:bg-stone-700 active:bg-stone-900"
           >
             查看进度
             <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
