@@ -54,37 +54,25 @@ export function Providers({ children }: { children: React.ReactNode }) {
     setMounted(true)
   }, [])
 
-  // 检查登录状态
+  // 检查登录状态 + 监听变化
   useEffect(() => {
     if (!mounted) return
-    const checkAuth = async () => {
+    let unsubscribe = () => {}
+    const initAuth = async () => {
       try {
         const { createClient } = await import('@/lib/supabase')
         const supabase = createClient()
         if (!supabase) return
         const { data } = await supabase.auth.getSession()
         setUser(data.session?.user ?? null)
-      } catch {
-        // Supabase 未配置时忽略
-      }
-    }
-    checkAuth()
-
-    // 监听认证状态变化
-    const { data: listener } = (() => {
-      try {
-        const { createClient } = require('@/lib/supabase')
-        const supabase = createClient()
-        if (!supabase) return { data: { subscription: { unsubscribe: () => {} } } }
-        return supabase.auth.onAuthStateChange((_event, session) => {
+        const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
           setUser(session?.user ?? null)
         })
-      } catch { return { data: { subscription: { unsubscribe: () => {} } } } }
-    })()
-
-    return () => {
-      listener?.subscription?.unsubscribe()
+        unsubscribe = () => authListener?.subscription?.unsubscribe()
+      } catch { /* ignore */ }
     }
+    initAuth()
+    return () => { unsubscribe() }
   }, [mounted])
 
   useEffect(() => {
