@@ -89,6 +89,7 @@ export default function Home() {
         <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
           <p className="text-sm text-stone-400 text-center sm:text-left">
             打开书，动笔写。写作不是想出来的，是写出来的。
+            <span className="select-none ml-2 opacity-50 hover:opacity-100 transition-opacity">₍^   ̫   ^₎</span>
           </p>
           <Link
             href="/dashboard"

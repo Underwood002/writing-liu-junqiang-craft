@@ -132,6 +132,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
       <footer className="border-t border-stone-200 py-6 sm:py-8 text-center text-base sm:text-lg text-stone-400 px-4">
         一个写作训练追踪社区 · 基于刘军强《写作是门手艺》
+        <br className="sm:hidden" />
+        <span className="select-none opacity-40 mt-1 sm:mt-0 sm:ml-2 inline-block">～(～￣▽￣)～～ 由落落和木头一起打造</span>
       </footer>
     </ThemeCtx.Provider>
   )
