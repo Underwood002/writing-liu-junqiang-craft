@@ -17,9 +17,9 @@ export default function LoginPage() {
     setError('')
     setLoading(true)
 
-    // 动态导入 Supabase 客户端（仅在浏览器端可用，等待配置环境变量）
     const { createClient } = await import('@/lib/supabase')
     const supabase = createClient()
+    if (!supabase) { setError('认证服务尚未配置，请稍后再试。'); setLoading(false); return }
 
     if (mode === 'signup') {
       const { error: err } = await supabase.auth.signUp({

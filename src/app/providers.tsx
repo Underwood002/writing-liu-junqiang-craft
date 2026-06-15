@@ -61,6 +61,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       try {
         const { createClient } = await import('@/lib/supabase')
         const supabase = createClient()
+        if (!supabase) return
         const { data } = await supabase.auth.getSession()
         setUser(data.session?.user ?? null)
       } catch {
@@ -73,7 +74,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
     const { data: listener } = (() => {
       try {
         const { createClient } = require('@/lib/supabase')
-        return createClient().auth.onAuthStateChange((_event, session) => {
+        const supabase = createClient()
+        if (!supabase) return { data: { subscription: { unsubscribe: () => {} } } }
+        return supabase.auth.onAuthStateChange((_event, session) => {
           setUser(session?.user ?? null)
         })
       } catch { return { data: { subscription: { unsubscribe: () => {} } } } }
@@ -95,7 +98,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const handleLogout = async () => {
     try {
       const { createClient } = await import('@/lib/supabase')
-      await createClient().auth.signOut()
+      const supabase = createClient()
+      if (supabase) { await supabase.auth.signOut() }
       setUser(null)
       router.refresh()
     } catch { /* ignore */ }
